@@ -1,0 +1,14 @@
+<assembly>
+ <formats>
+   <format>tar</format>
+    </formats>
+      <fileSets>
+        <fileSet>
+           <includes>
+                <include>${project.basedir}/target/${project.artifactId}-${project.version}.jar</include>
+                     <include>${project.basedir}/src/assembly/bin.xml</include>
+                          <include>${project.basedir}/target/classes/project.properties</include>
+                             </includes>
+                               </fileSet>
+                                </fileSets>
+                                </assembly>

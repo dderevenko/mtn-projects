@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>LAB</groupId>
+<artifactId>Derevenko</artifactId>
+<packaging>jar</packaging>
+<version>1</version>
+<name>Denis</name>
+
+<properties> <!-- Adds timestamp property and UTF-8 encoding -->
+<timestamp>${maven.build.timestamp}</timestamp>
+<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+
+<build>
+<!-- Adds project.properties file in which some variables will be compiled -->
+<filters>
+ <filter>src/main/resources/project.properties</filter>
+ </filters>
+ <resources>
+  <resource>
+    <directory>src/main/resources</directory>
+       <filtering>true</filtering>
+        </resource>
+        </resources>
+
+        <!-- Adds default goals -->
+        <defaultGoal>clean install</defaultGoal>
+
+        <!-- Defines target directory and project.jar name -->
+        <directory>${project.basedir}/target</directory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <plugins>
+
+        <!-- Plugin to make tar containing items specified in bin.xml -->
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+         <finalName>${project.version}-${maven.build.timestamp}</finalName>
+          <descriptor>src/assembly/bin.xml</descriptor>
+          </configuration>
+          <executions>
+           <execution>
+            <phase>install</phase>
+             <goals>
+               <goal>single</goal>
+                </goals>
+                </execution>
+                </executions>
+                </plugin>
+                </plugins>
+                </build>
+
+                <!-- Loads dependencies -->
+                <dependencies>
+                 <dependency>
+                  <groupId>commons-collections</groupId>
+                   <artifactId>commons-collections</artifactId>
+                   <version>3.2.2</version>
+                    </dependency>
+                    <dependency>
+
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                    <version>4.9</version>
+                    </dependency>
+                    </dependencies>
+                    </project>
